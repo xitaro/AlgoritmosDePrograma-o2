@@ -5,3 +5,4 @@ class Node:
         # store data
         self.data = data
         self.next = None
+        self.previous = None
