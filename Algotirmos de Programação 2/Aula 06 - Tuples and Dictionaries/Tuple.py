@@ -19,4 +19,4 @@ for car in range(len(cars)-2):
 def calcular(x,y):
     return(x+y),(x-y),(x*y),(x/y)
 
-print(calcular())
+print(calcular(5,2))
