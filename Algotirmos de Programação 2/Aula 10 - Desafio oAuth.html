@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title> oAuth Challenge - Marco Antônio Saraiva</title>
+<script>
+ 
+
+//Function will be called when the user end the process executed by the login button.
+function checkLoginState()
+{
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            //User logged in facebook and with the app accepted
+ 
+        } else if (response.status === 'not_authorized') {
+            //User logged in facebook, with the app not accepted
+        } else {
+            // User not logged in facebook
+        }
+    });
+}
+</script>
+</head>
+ 
+<body>
+ 
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '<380374449010653>', // APP ID
+          cookie     : true, // enable cookies to allow the server to acess the sessions
+          xfbml      : true, // process social plugins in this page
+          version    : 'v8.0' // Graph API used version
+        });
+      };
+ 
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+ 
+    <!--  Login social plugin   -->
+    <fb:login-button scope="email,publish_actions" onlogin="checkLoginState();"></fb:login-button>
+ 
+    
+        <h1>Hello, welcome!</h1>
+        <h2>To continue, enter your name and e-mail</h2>
+        <form >
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Enter your full name"><br>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" placeholder="Enter your e-mail"><br>
+        </form>
+        <button>Send</button>
+        <h3>Do you want to login with Facebook?</h3>
+        <button id="loginBtn">Facebook Login</button>
+        <div
+            class="fb-login-button"
+            data-max-rows="1"
+            data-size="large"
+            data-button-type="continue_with"
+            data-use-continue-as="true"
+        ></div>
+
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+        <div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
+
+
+</body>
+</html>
